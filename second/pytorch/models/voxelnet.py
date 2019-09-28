@@ -683,7 +683,7 @@ class VoxelNet(nn.Module):
                                                       num_points, x_sub_shaped, y_sub_shaped, mask)
 
         ###################################################################################
-        return voxel_features ### onnx voxel_features export
+        # return voxel_features ### onnx voxel_features export
         # middle_feature_extractor for trim shape
         voxel_features = voxel_features.squeeze()
         voxel_features = voxel_features.permute(1, 0)

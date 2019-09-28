@@ -187,6 +187,25 @@ python pytorch/train.py evaluate --config_path= configs/pointpillars/car/xyres_1
 
 ### ONNX IR Generate
 
+### pointpillars pytorch model convert to IR onnx, you should verify some code as follows:
+
+this python file is : second/pyotrch/models/voxelnet.py
+
+```bash
+        voxel_features = self.voxel_feature_extractor(pillar_x, pillar_y, pillar_z, pillar_i,
+                                                      num_points, x_sub_shaped, y_sub_shaped, mask)
+
+        ###################################################################################
+        # return voxel_features ### onnx voxel_features export
+        # middle_feature_extractor for trim shape
+        voxel_features = voxel_features.squeeze()
+        voxel_features = voxel_features.permute(1, 0)
+```  
+
+UNCOMMENT this line: return voxel_features 
+
+And Then, you can run convert IR command.
+
 ```bash
 cd ~/second.pytorch/second/
 python pytorch/train.py onnx_model_generate --config_path= configs/pointpillars/car/xyres_16.proto --model_dir=/path/to/model_dir
