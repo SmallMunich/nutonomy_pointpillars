@@ -1,17 +1,19 @@
-# PointPillars
+# PointPillars Pytorch Model Convert To ONNX, And Using TensorRT to Load this IR(ONNX) for Fast Speeding Inference
 
-Welcome to PointPillars.
+Welcome to PointPillars(This is origin from nuTonomy/second.pytorch ReadMe.txt).
 
 This repo demonstrates how to reproduce the results from
 [_PointPillars: Fast Encoders for Object Detection from Point Clouds_](https://arxiv.org/abs/1812.05784) (to be published at CVPR 2019) on the
 [KITTI dataset](http://www.cvlibs.net/datasets/kitti/) by making the minimum required changes from the preexisting
 open source codebase [SECOND](https://github.com/traveller59/second.pytorch). 
 
+Meanwhile, This part of the code also refers to the open source k0suke-murakami (https://github.com/k0suke-murakami/train_point_pillars)codethis code. 
+
 This is not an official nuTonomy codebase, but it can be used to match the published PointPillars results.
 
 **WARNING: This code is not being actively maintained. This code can be used to reproduce the results in the first version of the paper, https://arxiv.org/abs/1812.05784v1. For an actively maintained repository that can also reproduce PointPillars results on nuScenes, we recommend using [SECOND](https://github.com/traveller59/second.pytorch). We are not the owners of the repository, but we have worked with the author and endorse his code.**
 
-![Example Results](https://raw.githubusercontent.com/nutonomy/second.pytorch/master/images/pointpillars_kitti_results.png)
+![Example Results](https://github.com/SmallMunich/nutonomy_pointpillars/blob/master/images/pointpillars_kitti_results.png)
 
 
 ## Getting Started
@@ -22,6 +24,23 @@ subset of the original README is reproduced here.
 ### Code Support
 
 ONLY supports python 3.6+, pytorch 0.4.1+. Code has only been tested on Ubuntu 16.04/18.04.
+
+### Docker Environments
+
+If you do not waste time on pointpillars envs, please pull my docker virtual environments :
+
+```bash
+docker pull smallmunich/suke_pointpillars:v0 
+```
+
+Attention: when you launch this docker envs, please run this command :
+
+```bash 
+conda activate pointpillars 
+```
+
+And Then, you can run train or evaluation or onnx model generate command line.
+
 
 ### Install
 
@@ -166,5 +185,19 @@ cd ~/second.pytorch/second/
 python pytorch/train.py evaluate --config_path= configs/pointpillars/car/xyres_16.proto --model_dir=/path/to/model_dir
 ```
 
+### ONNX IR Generate
+
+```bash
+cd ~/second.pytorch/second/
+python pytorch/train.py onnx_model_generate --config_path= configs/pointpillars/car/xyres_16.proto --model_dir=/path/to/model_dir
+```
+
+
 * Detection result will saved in model_dir/eval_results/step_xxx.
 * By default, results are stored as a result.pkl file. To save as official KITTI label format use --pickle_result=False.
+
+### Blog Address
+
+* More Details will be update on my chinese blog: https://blog.csdn.net/Small_Munich/article/details/101559424  
+
+* best wishes.
