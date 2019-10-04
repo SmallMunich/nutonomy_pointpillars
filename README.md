@@ -217,6 +217,8 @@ python pytorch/train.py onnx_model_generate --config_path= configs/pointpillars/
 
 * Now, we can compare onnx results with pytorch origin model predicts as follows : 
 
+* the pfe.onnx and rpn.onnx predicts file is located: "second/pytorch/onnx_predict_outputs", you can see it carefully.
+
 * pfe.onnx model compare with origin pfe-layer : 
 ![Example Results](https://github.com/SmallMunich/nutonomy_pointpillars/blob/master/images/voxel_features.jpg)
 
