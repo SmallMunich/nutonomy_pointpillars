@@ -211,6 +211,17 @@ cd ~/second.pytorch/second/
 python pytorch/train.py onnx_model_generate --config_path= configs/pointpillars/car/xyres_16.proto --model_dir=/path/to/model_dir
 ```
 
+### Compare ONNX model With Pytorch Origin model predicts 
+
+* If you want to check this convert model about pfe.onnx and rpn.onnx model, please refer to this py-file: check_onnx_valid.py 
+
+* Now, we can compare onnx results with pytorch origin model predicts as follows : 
+
+* pfe.onnx model compare with origin pfe-layer : 
+![Example Results](https://github.com/SmallMunich/nutonomy_pointpillars/blob/master/images/voxel_features.jpg)
+
+* rpn.onnx model compare with origin rpn-layer : 
+![Example Results](https://github.com/SmallMunich/nutonomy_pointpillars/blob/master/images/rpn_features.jpg)
 
 * Detection result will saved in model_dir/eval_results/step_xxx.
 * By default, results are stored as a result.pkl file. To save as official KITTI label format use --pickle_result=False.
