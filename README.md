@@ -222,7 +222,12 @@ python pytorch/train.py onnx_model_generate --config_path= configs/pointpillars/
 * Now, we can compare onnx results with pytorch origin model predicts as follows : 
 
 * the pfe.onnx and rpn.onnx predicts file is located: "second/pytorch/onnx_predict_outputs", you can see it carefully.
-** eval_voxel_features.txt eval_voxel_features_onnx.txt eval_rpn_features.txt eval_rpn_onnx_features.txt 
+```bash
+    eval_voxel_features.txt 
+    eval_voxel_features_onnx.txt 
+    eval_rpn_features.txt 
+    eval_rpn_onnx_features.txt 
+```
 
 * pfe.onnx model compare with origin pfe-layer : 
 ![Example Results](https://github.com/SmallMunich/nutonomy_pointpillars/blob/master/images/voxel_features.jpg)
@@ -237,7 +242,12 @@ python pytorch/train.py onnx_model_generate --config_path= configs/pointpillars/
 * Now, we can compare onnx results with pytorch origin model predicts as follows : 
 
 * the pfe.onnx and rpn.onnx predicts file is located: "second/pytorch/onnx_predict_outputs", you can see it carefully.
-** pfe_rpn_onnx_outputs.txt pfe_tensorrt_outputs.txt rpn_onnx_outputs.txt rpn_tensorrt_outputs.txt 
+```bash
+    pfe_rpn_onnx_outputs.txt 
+    pfe_tensorrt_outputs.txt 
+    rpn_onnx_outputs.txt 
+    rpn_tensorrt_outputs.txt 
+```
 
 * pfe.onnx model compare with tensorrt pfe-layer : 
 ![Example Results](https://github.com/SmallMunich/nutonomy_pointpillars/blob/master/images/pfe_trt.jpg)
@@ -248,7 +258,7 @@ python pytorch/train.py onnx_model_generate --config_path= configs/pointpillars/
 ### Blog Address
 
 * More Details will be update on my chinese blog:
-** https://blog.csdn.net/Small_Munich/article/details/101559424  
-** https://blog.csdn.net/Small_Munich/article/details/102073540
-** wait for update 
-* best wishes.
+* https://blog.csdn.net/Small_Munich/article/details/101559424  
+* https://blog.csdn.net/Small_Munich/article/details/102073540
+* wait for update & best wishes.
+
