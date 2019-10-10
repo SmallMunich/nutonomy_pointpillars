@@ -1,0 +1,67 @@
+pfe_inputs length is :  8
+(Unnamed Layer* 0) [Concatenation]
+(Unnamed Layer* 1) [Reduce]
+(Unnamed Layer* 2) [Shuffle]
+(Unnamed Layer* 3) [ElementWise]
+(Unnamed Layer* 4) [ElementWise]
+(Unnamed Layer* 5) [ElementWise]
+(Unnamed Layer* 6) [ElementWise]
+(Unnamed Layer* 7) [Concatenation]
+(Unnamed Layer* 8) [Concatenation]
+(Unnamed Layer* 9) [Concatenation]
+(Unnamed Layer* 10) [ElementWise]
+(Unnamed Layer* 11) [Convolution]
+(Unnamed Layer* 12) [Scale]
+(Unnamed Layer* 13) [Activation]
+(Unnamed Layer* 14) [Convolution]
+(64, 12000, 1)
+inference time is :  0.01040460991859436
+Outputs(_0=array([[[[  43.271442],
+         [  43.271442],
+         [  43.271442],
+         ...,
+         [  43.271442],
+         [  43.271442],
+         [  43.271442]],
+
+        [[ -15.622024],
+         [ -15.622024],
+         [ -15.622024],
+         ...,
+         [ -15.622024],
+         [ -15.622024],
+         [ -15.622024]],
+
+        [[1142.2899  ],
+         [1142.2899  ],
+         [1142.2899  ],
+         ...,
+         [1142.2899  ],
+         [1142.2899  ],
+         [1142.2899  ]],
+
+        ...,
+
+        [[-480.59708 ],
+         [-480.59708 ],
+         [-480.59708 ],
+         ...,
+         [-480.59708 ],
+         [-480.59708 ],
+         [-480.59708 ]],
+
+        [[-307.2786  ],
+         [-307.2786  ],
+         [-307.2786  ],
+         ...,
+         [-307.2786  ],
+         [-307.2786  ],
+         [-307.2786  ]],
+
+        [[-470.82718 ],
+         [-470.82718 ],
+         [-470.82718 ],
+         ...,
+         [-470.82718 ],
+         [-470.82718 ],
+         [-470.82718 ]]]], dtype=float32))

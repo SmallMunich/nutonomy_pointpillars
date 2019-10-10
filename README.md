@@ -7,7 +7,7 @@ This repo demonstrates how to reproduce the results from
 [KITTI dataset](http://www.cvlibs.net/datasets/kitti/) by making the minimum required changes from the preexisting
 open source codebase [SECOND](https://github.com/traveller59/second.pytorch). 
 
-Meanwhile, This part of the code also refers to the open source k0suke-murakami (https://github.com/k0suke-murakami/train_point_pillars)codethis code. 
+Meanwhile, This part of the code also refers to the open source k0suke-murakami (https://github.com/k0suke-murakami/train_point_pillars) this code. 
 
 This is not an official nuTonomy codebase, but it can be used to match the published PointPillars results.
 
@@ -21,9 +21,6 @@ This is not an official nuTonomy codebase, but it can be used to match the publi
 This is a fork of [SECOND for KITTI object detection](https://github.com/traveller59/second.pytorch) and the relevant
 subset of the original README is reproduced here.
 
-### Code Support
-
-ONLY supports python 3.6+, pytorch 0.4.1+. Code has only been tested on Ubuntu 16.04/18.04.
 
 ### Docker Environments
 
@@ -47,7 +44,7 @@ And Then, you can run train or evaluation or onnx model generate command line.
 #### 1. Clone code
 
 ```bash
-git clone https://github.com/nutonomy/second.pytorch.git
+git clone https://github.com/SmallMunich/nutonomy_pointpillars.git
 ```
 
 #### 2. Install Python packages
@@ -56,7 +53,7 @@ It is recommend to use the Anaconda package manager.
 
 First, use Anaconda to configure as many packages as possible.
 ```bash
-conda create -n pointpillars python=3.7 anaconda
+conda create -n pointpillars python=3.6 anaconda
 source activate pointpillars
 conda install shapely pybind11 protobuf scikit-image numba pillow
 conda install pytorch torchvision -c pytorch
@@ -70,7 +67,7 @@ pip install fire tensorboardX
 ```
 
 Finally, install SparseConvNet. This is not required for PointPillars, but the general SECOND code base expects this
-to be correctly configured. 
+to be correctly configured. However, I suggest you install the spconv instead of SparseConvNet.
 ```bash
 git clone git@github.com:facebookresearch/SparseConvNet.git
 cd SparseConvNet/
@@ -97,7 +94,11 @@ export NUMBAPRO_LIBDEVICE=/usr/local/cuda/nvvm/libdevice
 
 #### 4. PYTHONPATH
 
-Add second.pytorch/ to your PYTHONPATH.
+Add nutonomy_pointpillars/ to your PYTHONPATH.
+
+```bash 
+export PYTHONPATH=$PYTHONPATH:/your_root_path/nutonomy_pointpillars/
+```
 
 ### Prepare dataset
 
@@ -185,6 +186,9 @@ cd ~/second.pytorch/second/
 python pytorch/train.py evaluate --config_path= configs/pointpillars/car/xyres_16.proto --model_dir=/path/to/model_dir
 ```
 
+* Detection result will saved in model_dir/eval_results/step_xxx.
+* By default, results are stored as a result.pkl file. To save as official KITTI label format use --pickle_result=False.
+
 ### ONNX IR Generate
 
 ### pointpillars pytorch model convert to IR onnx, you should verify some code as follows:
@@ -218,6 +222,7 @@ python pytorch/train.py onnx_model_generate --config_path= configs/pointpillars/
 * Now, we can compare onnx results with pytorch origin model predicts as follows : 
 
 * the pfe.onnx and rpn.onnx predicts file is located: "second/pytorch/onnx_predict_outputs", you can see it carefully.
+** eval_voxel_features.txt eval_voxel_features_onnx.txt eval_rpn_features.txt eval_rpn_onnx_features.txt 
 
 * pfe.onnx model compare with origin pfe-layer : 
 ![Example Results](https://github.com/SmallMunich/nutonomy_pointpillars/blob/master/images/voxel_features.jpg)
@@ -225,11 +230,25 @@ python pytorch/train.py onnx_model_generate --config_path= configs/pointpillars/
 * rpn.onnx model compare with origin rpn-layer : 
 ![Example Results](https://github.com/SmallMunich/nutonomy_pointpillars/blob/master/images/rpn_features.jpg)
 
-* Detection result will saved in model_dir/eval_results/step_xxx.
-* By default, results are stored as a result.pkl file. To save as official KITTI label format use --pickle_result=False.
+### Compare ONNX with TensorRT Fast Speed Inference 
+
+* If you want to use pfe.onnx and rpn.onnx model for tensorrt inference, please refer to this py-file: tensorrt_onnx_infer.py 
+
+* Now, we can compare onnx results with pytorch origin model predicts as follows : 
+
+* the pfe.onnx and rpn.onnx predicts file is located: "second/pytorch/onnx_predict_outputs", you can see it carefully.
+** pfe_rpn_onnx_outputs.txt pfe_tensorrt_outputs.txt rpn_onnx_outputs.txt rpn_tensorrt_outputs.txt 
+
+* pfe.onnx model compare with tensorrt pfe-layer : 
+![Example Results](https://github.com/SmallMunich/nutonomy_pointpillars/blob/master/images/pfe_trt.jpg)
+
+* rpn.onnx model compare with tensorrt rpn-layer : 
+![Example Results](https://github.com/SmallMunich/nutonomy_pointpillars/blob/master/images/rpn_trt.jpg)
 
 ### Blog Address
 
-* More Details will be update on my chinese blog: https://blog.csdn.net/Small_Munich/article/details/101559424  
-
+* More Details will be update on my chinese blog:
+** https://blog.csdn.net/Small_Munich/article/details/101559424  
+** https://blog.csdn.net/Small_Munich/article/details/102073540
+** wait for update 
 * best wishes.
