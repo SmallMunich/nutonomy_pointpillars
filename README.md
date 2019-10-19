@@ -237,6 +237,12 @@ python pytorch/train.py onnx_model_generate --config_path= configs/pointpillars/
 
 ### Compare ONNX with TensorRT Fast Speed Inference 
 
+* First you needs this environments(onnx_tensorrt envs):
+
+```bash
+      docker pull smallmunich/onnx_tensorrt:latest
+```
+
 * If you want to use pfe.onnx and rpn.onnx model for tensorrt inference, please refer to this py-file: tensorrt_onnx_infer.py 
 
 * Now, we can compare onnx results with pytorch origin model predicts as follows : 
@@ -258,7 +264,8 @@ python pytorch/train.py onnx_model_generate --config_path= configs/pointpillars/
 ### Blog Address
 
 * More Details will be update on my chinese blog:
-* https://blog.csdn.net/Small_Munich/article/details/101559424  
-* https://blog.csdn.net/Small_Munich/article/details/102073540
+* export from pytorch to onnx IR blog : https://blog.csdn.net/Small_Munich/article/details/101559424  
+* onnx compare blog : https://blog.csdn.net/Small_Munich/article/details/102073540
+* tensorrt compare blog : https://blog.csdn.net/Small_Munich/article/details/102489147
 * wait for update & best wishes.
 
