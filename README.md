@@ -27,7 +27,7 @@ subset of the original README is reproduced here.
 If you do not waste time on pointpillars envs, please pull my docker virtual environments :
 
 ```bash
-docker pull smallmunich/suke_pointpillars:v0 
+docker pull smallmunich/suke_pointpillars:v1 
 ```
 
 Attention: when you launch this docker envs, please run this command :
